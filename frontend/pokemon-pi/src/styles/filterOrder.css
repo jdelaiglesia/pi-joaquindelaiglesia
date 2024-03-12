@@ -1,0 +1,13 @@
+.filterOrderBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterOrderContentItem {
+  display: flex;
+  margin: 10px 10px;
+  padding: 0px 10px;
+  align-items: baseline;
+  background-color: rgba(255, 255, 255, 0.8);
+}

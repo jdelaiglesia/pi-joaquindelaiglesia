@@ -1,0 +1,35 @@
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.paginationButton {
+  background-image: url("/pokeballClosed.png");
+  background-color: rgba(0, 0, 0, 0);
+  background-size: cover;
+  width: 2vw;
+  height: 4vh;
+  margin: 1vh 1vw;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: black 1px 0 10px;
+  text-align: center;
+}
+
+.currentPaginationButton {
+  background-image: url("/masterballClosed.png");
+  background-color: rgba(0, 0, 0, 0);
+  background-size: cover;
+  width: 2vw;
+  height: 4vh;
+  margin: 1vh 1vw;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: black 1px 0 10px;
+}

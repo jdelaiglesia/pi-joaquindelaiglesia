@@ -1,0 +1,14 @@
+.homeBody {
+  height: 95vh;
+  background-image: url("/backgroundLanding.png");
+  background-size: cover;
+}
+
+.errorBody {
+  height: 95vh;
+  background-image: url("/backgroundLanding.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

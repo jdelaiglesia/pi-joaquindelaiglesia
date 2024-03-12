@@ -1,0 +1,153 @@
+.detailBody {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #fff;
+  height: 95vh;
+  background-image: url("/backgroundLanding.png");
+}
+
+.detailLeftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15vw;
+  height: 25vh;
+  margin-right: 5vw;
+}
+
+.detailImage {
+  max-width: 512px;
+}
+
+.detailTitle {
+  margin-bottom: 5vh;
+  text-transform: capitalize;
+  line-height: 0%;
+  margin-bottom: 3vh;
+  width: 40vw;
+  text-align: center;
+}
+
+.detailTypeContainer {
+  margin-bottom: 1vh;
+}
+
+.detailRightColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15vw;
+  height: 95vh;
+  background-image: url("/pokedex.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.detailRightColumn .detailText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 0%;
+  margin-bottom: 7vh;
+  margin-left: 0.7vw;
+  color: white;
+}
+
+/* CSS para definir los fondos según tipo del Pokémon */
+
+.detailBackgroundBug {
+  background-image: url("/types/detailBackground/bug.png");
+  background-size: cover;
+}
+
+.detailBackgroundDark {
+  background-image: url("/types/detailBackground/dark.png");
+  background-size: cover;
+}
+
+.detailBackgroundDragon {
+  background-image: url("/types/detailBackground/dragon.png");
+  background-size: cover;
+}
+
+.detailBackgroundElectric {
+  background-image: url("/types/detailBackground/electric.png");
+  background-size: cover;
+}
+
+.detailBackgroundFairy {
+  background-image: url("/types/detailBackground/fairy.png");
+  background-size: cover;
+}
+
+.detailBackgroundFighting {
+  background-image: url("/types/detailBackground/fight.png");
+  background-size: cover;
+}
+
+.detailBackgroundFire {
+  background-image: url("/types/detailBackground/fire.png");
+  background-size: cover;
+}
+
+.detailBackgroundFlying {
+  background-image: url("/types/detailBackground/flying.png");
+  background-size: cover;
+}
+
+.detailBackgroundGhost {
+  background-image: url("/types/detailBackground/ghost.png");
+  background-size: cover;
+}
+
+.detailBackgroundGrass {
+  background-image: url("/types/detailBackground/grass.png");
+  background-size: cover;
+}
+
+.detailBackgroundGround {
+  background-image: url("/types/detailBackground/ground.png");
+  background-size: cover;
+}
+
+.detailBackgroundIce {
+  background-image: url("/types/detailBackground/ice.png");
+  background-size: cover;
+}
+
+.detailBackgroundNormal {
+  background-image: url("/types/detailBackground/normal.png");
+  background-size: cover;
+}
+
+.detailBackgroundPoison {
+  background-image: url("/types/detailBackground/poison.png");
+  background-size: cover;
+}
+
+.detailBackgroundPsychic {
+  background-image: url("/types/detailBackground/psychic.png");
+  background-size: cover;
+}
+
+.detailBackgroundRock {
+  background-image: url("/types/detailBackground/rock.png");
+  background-size: cover;
+}
+
+.detailBackgroundSteel {
+  background-image: url("/types/detailBackground/steel.png");
+  background-size: cover;
+}
+
+.detailBackgroundWater {
+  background-image: url("/types/detailBackground/water.png");
+  background-size: cover;
+}

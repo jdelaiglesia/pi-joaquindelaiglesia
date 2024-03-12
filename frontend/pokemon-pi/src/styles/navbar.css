@@ -1,0 +1,26 @@
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #aaa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bannerImage {
+  width: 40%;
+}
+
+.navbarLinks {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  white-space: nowrap;
+}
+
+.navbarLink {
+  text-decoration: none;
+  color: #000;
+  padding-left: 1vw;
+}

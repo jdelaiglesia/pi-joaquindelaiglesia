@@ -1,0 +1,136 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1vh;
+  margin-top: 3vh;
+  padding: 3vh;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  width: 15%;
+  height: 200%;
+}
+
+.cardSprite {
+  max-height: 96px;
+}
+
+.cardIdNameContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.cardTypeContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.cardId {
+  font-weight: bold;
+  margin-right: 5%;
+  line-height: 0%;
+}
+
+.cardName {
+  font-style: italic;
+  text-transform: capitalize;
+  color: black;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cardBackgroundGrass {
+  background-image: url("/types/cardsBackground/grass.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundBug {
+  background-image: url("/types/cardsBackground/bug.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundDark {
+  background-image: url("/types/cardsBackground/dark.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundDragon {
+  background-image: url("/types/cardsBackground/dragon.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundElectric {
+  background-image: url("/types/cardsBackground/electric.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundFairy {
+  background-image: url("/types/cardsBackground/fairy.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundFighting {
+  background-image: url("/types/cardsBackground/fighting.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundFire {
+  background-image: url("/types/cardsBackground/fire.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundFlying {
+  background-image: url("/types/cardsBackground/flying.png");
+  background-size: cover;
+}
+
+.cardBackgroundGhost {
+  background-image: url("/types/cardsBackground/ghost.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundGround {
+  background-image: url("/types/cardsBackground/ground.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundIce {
+  background-image: url("/types/cardsBackground/ice.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundNormal {
+  background-image: url("/types/cardsBackground/normal.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundPoison {
+  background-image: url("/types/cardsBackground/poison.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundPsychic {
+  background-image: url("/types/cardsBackground/psychic.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundRock {
+  background-image: url("/types/cardsBackground/rock.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundSteel {
+  background-image: url("/types/cardsBackground/steel.jpg");
+  background-size: cover;
+}
+
+.cardBackgroundWater {
+  background-image: url("/types/cardsBackground/water.jpg");
+  background-size: cover;
+}
