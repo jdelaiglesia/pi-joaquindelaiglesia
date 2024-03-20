@@ -23,6 +23,7 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
+  console.log("Action received in pokemonReducer:", action);
   switch (action.type) {
     case GET_POKEMONS:
       return {

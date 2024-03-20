@@ -30,10 +30,8 @@ export const fetchPokemons = (start, end) => async (dispatch) => {
 
 export const fetchSpecificPokemon = (pokemonName) => async (dispatch) => {
   try {
-    console.log(pokemonName);
     const response = await axios.get(`${URL}/pokemons/${pokemonName}`);
-    console.log(response.data);
-    return dispatch(getSpecificPokemon(response.data));
+    dispatch(getSpecificPokemon(response.data));
   } catch (error) {
     alert("Error in action creator fetchSpecificPokemon", error);
     console.log("Error in action creator fetchSpecificPokemon", error);

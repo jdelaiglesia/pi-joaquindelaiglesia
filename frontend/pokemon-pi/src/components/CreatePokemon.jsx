@@ -44,7 +44,12 @@ const CreatePokemon = () => {
     dispatch(fetchTypes());
   }, [dispatch]);
 
+  useEffect(() => {
+    disableSubmitButton(errorValidate, pokemon);
+  }, [errorValidate, pokemon]);
+
   const disableSubmitButton = (errorValidate, pokemon) => {
+    console.log(errorValidate);
     for (let key in errorValidate) {
       if (errorValidate[key] !== "") {
         setValidForm(true);
@@ -63,7 +68,7 @@ const CreatePokemon = () => {
   const validatePokemon = (event) => {
     switch (event.target.name) {
       case "name":
-        event.target.value < 3
+        event.target.value.length < 3
           ? setErrorValidate({
               ...errorValidate,
               name: "Name must be at least 3 characters long.",
@@ -151,7 +156,6 @@ const CreatePokemon = () => {
       [e.target.name]: e.target.value,
     };
     validatePokemon(e);
-    disableSubmitButton(errorValidate, updatedPokemon);
     setPokemon(updatedPokemon);
   };
 
@@ -167,7 +171,7 @@ const CreatePokemon = () => {
         <Navbar />
       </div>
       <div className="createPokemonBody">
-        <div className={"createPokemonError lato-regular-italic"}>
+        <div className="createPokemonError lato-regular-italic">
           <ul>
             {Object.keys(errorValidate).map((key) => {
               if (errorValidate[key] !== "") {
