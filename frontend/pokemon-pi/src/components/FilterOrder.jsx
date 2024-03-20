@@ -1,6 +1,7 @@
 import "../styles/filterOrder.css";
 import "../styles/fonts.css";
 
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   filterPokemon,
@@ -10,15 +11,26 @@ import {
 
 const FilterOrder = () => {
   const dispatch = useDispatch();
+  const [order, setOrder] = useState("id");
+  const [type, setType] = useState("all");
 
   const handleFilter = (e) => {
+    setType(e.target.value);
     dispatch(setCurrentPage(0));
     dispatch(filterPokemon(0, 15, e.target.value));
   };
 
   const handleOrder = (e) => {
+    setOrder(e.target.value);
     dispatch(orderPokemon(e.target.value));
   };
+
+  const resetFilters = () => {
+    dispatch(filterPokemon(0, 15, "all"));
+    setOrder("id");
+    setType("all");
+  };
+
   return (
     <div className="filterOrderContainer">
       <div className="filterOrderBody">
@@ -26,7 +38,7 @@ const FilterOrder = () => {
           <label className="lato-regular filterOrderContentItem">
             Filter by Type
           </label>
-          <select name="type" id="type" onChange={handleFilter}>
+          <select name="type" id="type" value={type} onChange={handleFilter}>
             <option value="all">All</option>
             <option value="fire">Fire</option>
             <option value="water">Water</option>
@@ -52,16 +64,14 @@ const FilterOrder = () => {
           <label className="lato-regular filterOrderContentItem">
             Order by
           </label>
-          <select name="order" id="order" onChange={handleOrder}>
+          <select name="order" id="order" value={order} onChange={handleOrder}>
             <option value="id">Pokémon ID</option>
             <option value="asc">A-Z (Ascending)</option>
             <option value="desc">Z-A (Descending)</option>
           </select>
         </div>
         <div className="filterOrderResetButton">
-          <button onClick={() => dispatch(filterPokemon(0, 15, "all"))}>
-            Reset Filters
-          </button>
+          <button onClick={resetFilters}>Reset Filters</button>
         </div>
       </div>
     </div>
