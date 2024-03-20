@@ -1,5 +1,5 @@
 import Card from "./Card";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPokemons } from "../redux/operations";
 
@@ -7,28 +7,31 @@ import "../styles/cards.css";
 import "../styles/fonts.css";
 
 const Cards = ({ page }) => {
-  let pageNumber = Number(page) - 1;
-  if (pageNumber < 0 || pageNumber > 10) {
-    pageNumber = 0;
-  }
-  const pokemons = useSelector((state) => state.pokemons);
+  // let pageNumber = Number(page) - 1;
+  let pageNumber = useSelector((state) => state.pageNumber);
+  let filterType = useSelector((state) => state.typeFilter);
+  let pokemons = useSelector((state) => state.pokemons);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPokemons(pageNumber * 15, (pageNumber + 1) * 15));
+    if (filterType === "all") {
+      dispatch(fetchPokemons(pageNumber * 15, (pageNumber + 1) * 15));
+    }
   }, [dispatch, pageNumber]);
 
   if (!pokemons || pokemons.length === 0) {
     return (
       <div className="cardsContainer">
         <h1 className="lato-black">
-          <img src="/loading.gif" alt="Cargando..." srcset="" />
+          <img src="/loading.gif" alt="Cargando..." srcSet="" />
         </h1>
       </div>
     );
   }
 
-  console.log(pokemons);
+  if (pokemons.length > 15) {
+    pokemons = pokemons.slice(pageNumber * 15, (pageNumber + 1) * 15);
+  }
 
   return (
     <div className="cardsContainer">

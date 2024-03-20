@@ -9,7 +9,7 @@ const Error404 = () => {
         <Navbar />
       </div>
       <div className="errorBody">
-        <img src="/404.png" alt="Error 404" srcset="" />
+        <img src="/404.png" alt="Error 404" srcSet="" />
       </div>
     </div>
   );

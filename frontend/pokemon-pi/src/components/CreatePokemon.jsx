@@ -152,7 +152,6 @@ const CreatePokemon = () => {
     };
     validatePokemon(e);
     disableSubmitButton(errorValidate, updatedPokemon);
-    // checkDisableError(errorValidate);
     setPokemon(updatedPokemon);
   };
 

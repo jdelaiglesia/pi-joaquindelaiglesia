@@ -14,6 +14,7 @@ const Detail = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(params.name);
     dispatch(fetchSpecificPokemon(params.name));
     return () => {
       //TODO empty pokemon state
@@ -21,20 +22,23 @@ const Detail = () => {
   }, [dispatch]);
 
   try {
-    if (Object.keys(pokemon).length === 0 && pokemon.constructor === Object) {
+    if (
+      (Object.keys(pokemon).length === 0 && pokemon.constructor === Object) ||
+      pokemon === null
+    ) {
       return (
         <div className="detailContainer">
           <div className="detailHeader">
             <Navbar></Navbar>
           </div>
           <div className="detailBody">
-            <img src="/loading.gif" alt="Cargando..." srcset="" />
+            <img src="/loading.gif" alt="Cargando..." srcSet="" />
           </div>
         </div>
       );
     }
   } catch (error) {
-    navigate("/pokemon");
+    console.log("Error en el detalle ", error);
   }
 
   return (

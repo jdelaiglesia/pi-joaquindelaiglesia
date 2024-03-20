@@ -1,23 +1,35 @@
 import "../styles/pagination.css";
 
+import { setCurrentPage } from "../redux/operations";
 import { useNavigate, useParams } from "react-router-dom";
-
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 
 const Pagination = () => {
   const navigate = useNavigate();
-  let { pageNumber } = useParams();
-  pageNumber = pageNumber || 1;
-  const handleOnClick = (pageNumber) => navigate(`/home/${pageNumber}`);
-  const totalPages = 11;
+  const dispatch = useDispatch();
+  const [pageNumber, setPageNumber] = useState(0);
+  const paginationData = useSelector((state) => state.count);
+  const filter = useSelector((state) => state.typeFilter);
+  const page = useSelector((state) => state.pageNumber + 1);
+  const handleOnClick = (pageNumber) => {
+    setPageNumber(pageNumber - 1);
+    dispatch(setCurrentPage(pageNumber - 1));
+    // navigate(`/home/${pageNumber}`);
+  };
+  const totalPages = Math.ceil(paginationData / 15);
+
+  useEffect(() => {
+    console.log("filterType: ", filter);
+  }, [page]);
 
   return (
     <div className="paginationContainer">
-      {pageNumber > 1 && (
+      {page > 1 && (
         <button
           className="paginationButton lato-black"
           key={1}
-          onClick={() => handleOnClick(pageNumber - 1)}
+          onClick={() => handleOnClick(Number(pageNumber))}
         >
           ⬅
         </button>
@@ -25,7 +37,7 @@ const Pagination = () => {
       {Array.from({ length: totalPages }, (_, index) => (
         <button
           className={
-            (index + 1 === Number(pageNumber) || (!pageNumber && index === 0)
+            (index === Number(page) - 1 || (!page && index === 0)
               ? "currentPaginationButton"
               : "paginationButton") + " lato-black"
           }
@@ -35,11 +47,11 @@ const Pagination = () => {
           {index + 1}
         </button>
       ))}
-      {pageNumber < totalPages && (
+      {page < totalPages && (
         <button
           className="paginationButton lato-black"
           key={totalPages}
-          onClick={() => handleOnClick(Number(pageNumber) + 1)}
+          onClick={() => handleOnClick(Number(pageNumber) + 2)}
         >
           ➡
         </button>

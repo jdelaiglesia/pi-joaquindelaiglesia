@@ -2,16 +2,22 @@ import "../styles/filterOrder.css";
 import "../styles/fonts.css";
 
 import { useDispatch } from "react-redux";
-import { filterPokemon, orderPokemon } from "../redux/operations";
+import {
+  filterPokemon,
+  orderPokemon,
+  setCurrentPage,
+} from "../redux/operations";
 
 const FilterOrder = () => {
   const dispatch = useDispatch();
 
   const handleFilter = (e) => {
-    dispatch(filterPokemon(e.target.value));
+    dispatch(setCurrentPage(0));
+    dispatch(filterPokemon(0, 15, e.target.value));
   };
 
   const handleOrder = (e) => {
+    console.log("se viene el handleOrder");
     dispatch(orderPokemon(e.target.value));
   };
   return (

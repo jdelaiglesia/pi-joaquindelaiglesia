@@ -6,6 +6,8 @@ import {
   CREATE_POKEMON,
   GET_FILTERED_POKEMONS,
   GET_ORDERED_POKEMONS,
+  SET_PAGE,
+  SET_FILTER,
 } from "./action-types";
 export {
   GET_POKEMONS,
@@ -15,6 +17,8 @@ export {
   CREATE_POKEMON,
   GET_FILTERED_POKEMONS,
   GET_ORDERED_POKEMONS,
+  SET_PAGE,
+  SET_FILTER,
 };
 
 export const getPokemons = (pokemons) => ({
@@ -52,4 +56,14 @@ export const getFilteredPokemons = (pokemons, typeFilter) => ({
 export const getOrderedPokemons = (pokemons) => ({
   type: GET_ORDERED_POKEMONS,
   payload: pokemons,
+});
+
+export const setPage = (pageNumber) => ({
+  type: SET_PAGE,
+  payload: pageNumber,
+});
+
+export const setFilter = (typeFilter) => ({
+  type: SET_FILTER,
+  payload: typeFilter,
 });

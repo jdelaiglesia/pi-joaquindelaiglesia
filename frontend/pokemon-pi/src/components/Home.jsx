@@ -1,7 +1,7 @@
 import "../styles/home.css";
 
 import { useParams } from "react-router-dom";
-import { fetchTypes } from "../redux/operations";
+import { fetchTypes, fetchPokemons } from "../redux/operations";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -16,7 +16,7 @@ const Home = () => {
     dispatch(fetchTypes());
   }, [dispatch]);
 
-  const { pageNumber } = useParams();
+  const { pageNumber, filterType } = useParams();
   return (
     <div className="homeContainer">
       <div className="homeHeader">
@@ -24,8 +24,8 @@ const Home = () => {
       </div>
       <div className="homeBody">
         <FilterOrder />
-        <Cards page={pageNumber || 1} />
-        <Pagination page={pageNumber || 1} />
+        <Cards page={pageNumber || 1} filter={filterType || "all"} />
+        <Pagination />
       </div>
     </div>
   );

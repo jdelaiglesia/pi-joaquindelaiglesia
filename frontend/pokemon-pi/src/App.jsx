@@ -11,9 +11,10 @@ function App() {
       <Route path="/" element={<Landing />}></Route>
       <Route path="/home" element={<Home />}></Route>
       <Route path="/home/:pageNumber" element={<Home />}></Route>
+      <Route path="/home/:pageNumber/:filterType" element={<Home />}></Route>
       <Route path="/pokemon/:name" element={<Detail />}></Route>
-      <Route path="*" element={<Error404 />}></Route>
       <Route path="/createPokemon" element={<CreatePokemon />}></Route>
+      <Route path="*" element={<Error404 />}></Route>
     </Routes>
   );
 }

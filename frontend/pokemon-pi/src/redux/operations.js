@@ -6,27 +6,30 @@ import {
   getTypes,
   createPokemon,
   getFilteredPokemons,
+  setPage,
+  setFilter,
 } from "./actions";
 
 const URL = "http://localhost:3001/api";
 
 export const fetchPokemons = (start, end) => async (dispatch) => {
   try {
-    dispatch(clearPokemons());
     const response = await axios.get(
       `${URL}/pokemons/?start=${start}&end=${end}`
     );
     dispatch(getPokemons(response.data));
   } catch (error) {
-    alert("Error in action creator fetchSpecificPokemon", error);
+    alert("Error in action creator fetchPokemons", error);
     console.log("Error in action creator fetchPokemons", error);
   }
 };
 
 export const fetchSpecificPokemon = (pokemonName) => async (dispatch) => {
   try {
+    console.log(pokemonName);
     const response = await axios.get(`${URL}/pokemons/${pokemonName}`);
-    dispatch(getSpecificPokemon(response.data));
+    console.log(response.data);
+    return dispatch(getSpecificPokemon(response.data));
   } catch (error) {
     alert("Error in action creator fetchSpecificPokemon", error);
     console.log("Error in action creator fetchSpecificPokemon", error);
@@ -38,7 +41,7 @@ export const fetchTypes = () => async (dispatch) => {
     const response = await axios.get(`${URL}/types`);
     dispatch(getTypes(response.data));
   } catch (error) {
-    alert("Error in action creator fetchSpecificPokemon", error);
+    alert("Error in action creator fetchTypes", error);
     console.log("Error in action creator fetchTypes", error);
   }
 };
@@ -64,33 +67,33 @@ export const addPokemon = (pokemon) => async (dispatch, getState) => {
   }
 };
 
-export const filterPokemon = (filterData) => async (dispatch) => {
+export const filterPokemon = (start, end, filterData) => async (dispatch) => {
   try {
-    if (filterData === "all") {
-      dispatch(fetchPokemons(0, 15));
-      return;
-    }
-    dispatch(clearPokemons());
-    const response = await axios.get(`${URL}/pokemons/?start=0&end=200`);
-    console.log(response.data);
-    let filtered = response.data.filter((pokemon) => {
-      return pokemon.type1 === filterData;
-    });
-    console.log(filtered);
-    dispatch(getFilteredPokemons(filtered));
+    dispatch(setFilter(filterData));
+    const response = await axios.get(
+      `${URL}/pokemonsFiltered/?start=${start}&end=${end}&filter=${filterData}`
+    );
+    dispatch(getFilteredPokemons(response.data));
   } catch (error) {
-    alert("Error in action creator getFilteredPokemons", error);
-    console.log("Error in action creator getFilteredPokemons", error);
+    alert("Error in action creator filterPokemon", error);
+    console.log("Error in action creator filterPokemon", error);
   }
 };
 
 export const orderPokemon = () => async (dispatch) => {
   try {
-    const response = await axios.get(`${URL}/pokemons/?start=0&end=200`);
-    console.log(response.data);
-    dispatch(getFilteredPokemons(response.data));
+    console.log("orderPokemon");
   } catch (error) {
-    alert("Error in action creator getFilteredPokemons", error);
-    console.log("Error in action creator getFilteredPokemons", error);
+    alert("Error in action creator orderPokemon", error);
+    console.log("Error in action creator orderPokemon", error);
+  }
+};
+
+export const setCurrentPage = (pageNumber) => async (dispatch) => {
+  try {
+    dispatch(setPage(pageNumber));
+  } catch (error) {
+    alert("Error in action creator setPage", error);
+    console.log("Error in action creator setPage", error);
   }
 };
