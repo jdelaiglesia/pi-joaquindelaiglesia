@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
-  getPokemons,
+  setPokemons,
+  setAllPokemons,
   getSpecificPokemon,
   clearPokemons,
   getTypes,
@@ -8,6 +9,8 @@ import {
   getFilteredPokemons,
   setPage,
   setFilter,
+  searchPokemon,
+  getOrderedPokemons,
 } from "./actions";
 
 const URL = "http://localhost:3001/api";
@@ -17,7 +20,8 @@ export const fetchPokemons = (start, end) => async (dispatch) => {
     const response = await axios.get(
       `${URL}/pokemons/?start=${start}&end=${end}`
     );
-    dispatch(getPokemons(response.data));
+    dispatch(setPokemons(response.data));
+    dispatch(setAllPokemons(response.data));
   } catch (error) {
     alert("Error in action creator fetchPokemons", error);
     console.log("Error in action creator fetchPokemons", error);
@@ -80,9 +84,38 @@ export const filterPokemon = (start, end, filterData) => async (dispatch) => {
   }
 };
 
-export const orderPokemon = () => async (dispatch) => {
+export const orderPokemon = (orderPokemon) => async (dispatch, getState) => {
   try {
-    console.log("orderPokemon");
+    const pokemons = [...getState().pokemons]; // crea una copia de pokemons
+    if (orderPokemon === "id") {
+      pokemons.sort((a, b) => a.id - b.id);
+      dispatch(getOrderedPokemons(pokemons));
+      return;
+    } else if (orderPokemon === "desc") {
+      pokemons.sort((a, b) => {
+        if (a.name < b.name) {
+          return 1;
+        }
+        if (a.name > b.name) {
+          return -1;
+        }
+        return 0;
+      });
+      dispatch(getOrderedPokemons(pokemons));
+      return;
+    } else if (orderPokemon === "asc") {
+      pokemons.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (a.name < b.name) {
+          return -1;
+        }
+        return 0;
+      });
+      dispatch(getOrderedPokemons(pokemons));
+      return;
+    }
   } catch (error) {
     alert("Error in action creator orderPokemon", error);
     console.log("Error in action creator orderPokemon", error);
@@ -97,3 +130,17 @@ export const setCurrentPage = (pageNumber) => async (dispatch) => {
     console.log("Error in action creator setPage", error);
   }
 };
+
+export const searchPokemonOperation =
+  (pokemonName) => async (dispatch, getState) => {
+    try {
+      const allPokemons = [...getState().allPokemons];
+      const filteredPokemons = allPokemons.filter(
+        (pokemon) => pokemon.name.toLowerCase() === pokemonName.toLowerCase()
+      );
+      dispatch(getOrderedPokemons(filteredPokemons));
+    } catch (error) {
+      alert("Error in action creator searchPokemonOperation", error);
+      console.log("Error in action creator searchPokemonOperation", error);
+    }
+  };

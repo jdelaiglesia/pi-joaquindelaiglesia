@@ -17,7 +17,6 @@ const FilterOrder = () => {
   };
 
   const handleOrder = (e) => {
-    console.log("se viene el handleOrder");
     dispatch(orderPokemon(e.target.value));
   };
   return (
@@ -54,9 +53,15 @@ const FilterOrder = () => {
             Order by
           </label>
           <select name="order" id="order" onChange={handleOrder}>
+            <option value="id">Pokémon ID</option>
             <option value="asc">A-Z (Ascending)</option>
             <option value="desc">Z-A (Descending)</option>
           </select>
+        </div>
+        <div className="filterOrderResetButton">
+          <button onClick={() => dispatch(filterPokemon(0, 15, "all"))}>
+            Reset Filters
+          </button>
         </div>
       </div>
     </div>

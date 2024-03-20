@@ -19,7 +19,7 @@ const Cards = ({ page }) => {
     }
   }, [dispatch, pageNumber]);
 
-  if (!pokemons || pokemons.length === 0) {
+  if (!pokemons) {
     return (
       <div className="cardsContainer">
         <h1 className="lato-black">

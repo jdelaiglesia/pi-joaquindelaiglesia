@@ -8,14 +8,17 @@ import {
   GET_ORDERED_POKEMONS,
   SET_PAGE,
   SET_FILTER,
+  SEARCH_POKEMON,
 } from "./actions";
 
 const initialState = {
+  allPokemons: [],
   pokemons: [],
   pokemon: {},
   types: [],
   typeFilter: "all",
   count: 0,
+  pokemonName: "",
   pageNumber: 0,
 };
 
@@ -24,6 +27,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_POKEMONS:
       return {
         ...state,
+        allPokemons: action.payload.pokemons,
         pokemons: action.payload.pokemons,
         count: action.payload.count,
       };
@@ -46,17 +50,9 @@ const rootReducer = (state = initialState, action) => {
         count: action.payload.pokemons.count,
       };
     case GET_ORDERED_POKEMONS:
-      let sorted;
-      if (action.payload === "asc") {
-        sorted = state.pokemons.sort((a, b) => a.id - b.id);
-      } else if (action.payload === "desc") {
-        sorted = state.pokemons.sort((a, b) => b.id - a.id);
-      } else {
-        sorted = state.pokemons;
-      }
       return {
         ...state,
-        pokemons: sorted,
+        pokemons: action.payload,
       };
     case SET_PAGE:
       return {
@@ -67,6 +63,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         typeFilter: action.payload,
+      };
+    case SEARCH_POKEMON:
+      return {
+        ...state,
+        pokemonName: action.payload,
       };
     default:
       return state;
